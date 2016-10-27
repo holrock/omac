@@ -1,0 +1,16 @@
+{
+  "name": "omac",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": { "username": "holrock", "email": "ispeporez@gmail.com" },
+  "homepage": null,
+  "synopsis": "image proxy",
+  "package_type": [ "Exe", "omac.ml" ],
+  "dependencies": [
+    { "package_name": "lwt", "constraints": null },
+    { "package_name": "cohttp.lwt", "constraints": null },
+    { "package_name": "conduit", "constraints": null },
+    { "package_name": "cohttp", "constraints": null }
+  ]
+
+}

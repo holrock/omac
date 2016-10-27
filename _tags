@@ -1,0 +1,30 @@
+# OASIS_START
+# DO NOT EDIT (digest: c52e1f2d05c397dc87746acb598aaf0b)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Executable omac
+<src/src/omac.{native,byte}>: pkg_cohttp
+<src/src/omac.{native,byte}>: pkg_cohttp.lwt
+<src/src/omac.{native,byte}>: pkg_conduit
+<src/src/omac.{native,byte}>: pkg_lwt
+<src/*.ml{,i,y}>: pkg_cohttp
+<src/*.ml{,i,y}>: pkg_cohttp.lwt
+<src/*.ml{,i,y}>: pkg_conduit
+<src/*.ml{,i,y}>: pkg_lwt
+<src/src/*.ml{,i,y}>: pkg_cohttp
+<src/src/*.ml{,i,y}>: pkg_cohttp.lwt
+<src/src/*.ml{,i,y}>: pkg_conduit
+<src/src/*.ml{,i,y}>: pkg_lwt
+# OASIS_STOP
