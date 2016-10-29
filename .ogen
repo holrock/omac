@@ -10,7 +10,8 @@
     { "package_name": "lwt", "constraints": null },
     { "package_name": "cohttp.lwt", "constraints": null },
     { "package_name": "conduit", "constraints": null },
-    { "package_name": "cohttp", "constraints": null }
+    { "package_name": "cohttp", "constraints": null },
+    { "package_name": "cryptokit", "constraints": null }
   ]
 
 }

@@ -14,6 +14,16 @@ Plugins: META (0.4), DevFiles (0.4)
 
 Executable "omac"
   Path: src/
-  MainIs: omac.ml
+  MainIs: main.ml
   CompiledObject: best
-  BuildDepends: lwt, cohttp.lwt, conduit, cohttp
+  BuildDepends: lwt, cohttp.lwt, conduit, cohttp, cryptokit
+
+Executable "test_omac"
+  Path: src/
+  MainIs: test_main.ml
+  CompiledObject: best
+  Install: false
+  BuildDepends: lwt, cohttp.lwt, conduit, cohttp, cryptokit, alcotest
+
+Test "test_omac"
+  Command: ./test_main.native

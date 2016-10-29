@@ -22,4 +22,5 @@ depends: [
   "cohttp.lwt"
   "conduit"
   "cohttp"
+  "cryptokit"
 ]
