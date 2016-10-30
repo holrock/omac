@@ -4,6 +4,6 @@
 
 S src/
 B _build/src/
-PKG lwt cohttp.lwt conduit cohttp cryptokit alcotest
+PKG lwt cohttp.lwt conduit cohttp cryptokit alcotest str
 #EXT 
 #FLG 
