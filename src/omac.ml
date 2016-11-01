@@ -168,37 +168,6 @@ let transferred_headers req =
   | Some s -> s
   | None -> match Header.get headers "accept-encoding" with | Some s -> s | None -> ""
   in
-  let default_header = [
-    "Via", user_agent;
-    "User-Agent", user_agent;
-    "Accept", accept_val;
-    "Accept-Encoding",  accept_encoding_val;
-    "X-Frame-Options", "deny";
-    "X-XSS-Protection", "1; mode=block";
-    "X-Content-Type-Options", "nosniff";
-    "Content-Security-Policy", "default-src 'none'; img-src data:; style-src 'unsafe-inline'";
-    "Strict-Transport-Security", "max-age=31536000; includeSubDomains";
-  ]
-  in
-  let new_header = List.fold_left (fun header key ->
-    match Header.get headers key with
-    | Some v -> (key, v)::header
-    | None -> header)
-  default_header
-  ["etag"; "expires"; "last-modified"]
-  in
-  Header.of_list new_header
-
-let transferred_headers req =
-  let headers = Request.headers req in
-  let accept_val = match accept with
-  | Some s -> s
-  | None -> match Header.get headers "accept" with | Some s -> s | None -> "image/*"
-  in
-  let accept_encoding_val = match accept_encoding with
-  | Some s -> s
-  | None -> match Header.get headers "accept-encoding" with | Some s -> s | None -> ""
-  in
   Header.of_list ["Via", user_agent;
     "User-Agent", user_agent;
     "Accept", accept_val;
