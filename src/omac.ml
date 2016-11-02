@@ -95,9 +95,11 @@ let hmac url =
   t#get_string
 
 
+let reg_split_slash = (Str.regexp_string "/")
+
 let parse_uri uri =
   let path = Uri.path uri in
-  match Str.split(Str.regexp_string "/") path with
+  match Str.split reg_split_slash path with
   | [] -> None
   | digest::encoded_url::[] -> Some (digest, encoded_url)
   | _ -> 
