@@ -5,8 +5,9 @@
 opam-version: "1.2"
 maintainer: "holrock <ispeporez@gmail.com>"
 authors: "holrock <ispeporez@gmail.com>"
-homepage: ""
-bug-reports: "/issues"
+homepage: "https://github.com/holrock/omac"
+version: "1.0.0"
+bug-reports: "https://github.com/holrock/omac/issues"
 license: "MIT"
 dev-repo: ".git"
 build: [
@@ -14,7 +15,8 @@ build: [
   [make]
 ]
 install: [make "install"]
-remove: ["ocamlfind" "remove" "omac"]
+#remove: ["ocamlfind" "remove" "omac"]
+remove: ["rm" "%{bin}%/omac"]
 depends: [
   "ocamlfind" {build}
   "oasis" {build}
@@ -23,4 +25,5 @@ depends: [
   "conduit"
   "cohttp"
   "cryptokit"
+  "alcotest"
 ]
