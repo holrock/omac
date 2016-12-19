@@ -1,6 +1,6 @@
 # omac (WIP)
 
-omca is port of [camo](https://github.com/atmos/camo) for ocaml.
+omac is port of [camo](https://github.com/atmos/camo) for ocaml.
 
 ```sh
 opam install conf-libev # optional
