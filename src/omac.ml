@@ -15,6 +15,7 @@ let accept_encoding = getenv_opt "OMAC_ACCEPT_ENCODING"
 let user_agent      = getenv "OMAC_HEADER_VIA" "omac proxy"
 let content_length_limit = getenv "OMAC_CONTENT_LENGTH_LIIT" "5242880" |> int_of_string
 
+let acceptable_content_types = ["image/jpeg"; "image/gif"; "image/png"; "image/webp"]
 
 let int_of_string_ign s =
   try
@@ -60,15 +61,16 @@ let manage_content_length src_headers =
         | Some value -> Ok ("content-encoding", value)
         | None -> Error "missing content-length"
 
+let is_acceptable_content_type content_type =
+  List.mem content_type acceptable_content_types
 
 let build_response_header src_headers =
   match manage_content_length src_headers with
   | Error _ as e ->  e
   | Ok content_length ->
     match Header.get src_headers "content-type" with
-    (* TODO LOOKUP MIME-TYPE *)
     | None -> Error "response header not contain content-type"
-    | Some content_type ->
+    | Some content_type when is_acceptable_content_type content_type ->
       let cache_control = (match Header.get src_headers "cache-control" with | Some s -> s | None -> "public, max-age=31536000") in
       let extra = List.fold_left (fun header key ->
         match Header.get src_headers key with
@@ -80,6 +82,7 @@ let build_response_header src_headers =
       let new_header = Header.add_list default_header extra in
       Lwt_log.ign_debug_f "response_header\n%s" (Header.to_string new_header);
       Ok new_header
+    | Some content_type -> Error ("unacceptable content-type: " ^ content_type)
 
 
 let is_invalid_path path =
