@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: c52e1f2d05c397dc87746acb598aaf0b)
+# DO NOT EDIT (digest: 4d9e40e912d01a5d75c45c1e81717b51)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -15,16 +15,27 @@ true: annot, bin_annot
 "_darcs": -traverse
 "_darcs": not_hygienic
 # Executable omac
-<src/src/omac.{native,byte}>: pkg_cohttp
-<src/src/omac.{native,byte}>: pkg_cohttp.lwt
-<src/src/omac.{native,byte}>: pkg_conduit
-<src/src/omac.{native,byte}>: pkg_lwt
+<src/main.{native,byte}>: pkg_cohttp
+<src/main.{native,byte}>: pkg_cohttp.lwt
+<src/main.{native,byte}>: pkg_conduit
+<src/main.{native,byte}>: pkg_cryptokit
+<src/main.{native,byte}>: pkg_lwt
+<src/main.{native,byte}>: pkg_str
+# Executable test_omac
+<src/test_main.{native,byte}>: pkg_alcotest
+<src/test_main.{native,byte}>: pkg_cohttp
+<src/test_main.{native,byte}>: pkg_cohttp.lwt
+<src/test_main.{native,byte}>: pkg_conduit
+<src/test_main.{native,byte}>: pkg_cryptokit
+<src/test_main.{native,byte}>: pkg_lwt
+<src/test_main.{native,byte}>: pkg_lwt.log
+<src/test_main.{native,byte}>: pkg_str
+<src/*.ml{,i,y}>: pkg_alcotest
 <src/*.ml{,i,y}>: pkg_cohttp
 <src/*.ml{,i,y}>: pkg_cohttp.lwt
 <src/*.ml{,i,y}>: pkg_conduit
+<src/*.ml{,i,y}>: pkg_cryptokit
 <src/*.ml{,i,y}>: pkg_lwt
-<src/src/*.ml{,i,y}>: pkg_cohttp
-<src/src/*.ml{,i,y}>: pkg_cohttp.lwt
-<src/src/*.ml{,i,y}>: pkg_conduit
-<src/src/*.ml{,i,y}>: pkg_lwt
+<src/*.ml{,i,y}>: pkg_lwt.log
+<src/*.ml{,i,y}>: pkg_str
 # OASIS_STOP
