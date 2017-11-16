@@ -1,0 +1,5 @@
+(jbuild_version 1)
+(library
+  ((name omac)
+  (libraries (str lwt cohttp.lwt conduit cohttp cryptokit))
+  (public_name omac)))

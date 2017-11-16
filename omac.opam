@@ -11,19 +11,14 @@ bug-reports: "https://github.com/holrock/omac/issues"
 license: "MIT"
 dev-repo: ".git"
 build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
+  ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-install: [make "install"]
-#remove: ["ocamlfind" "remove" "omac"]
-remove: ["rm" "%{bin}%/omac"]
 depends: [
-  "ocamlfind" {build}
-  "oasis" {build}
+  "jbuilder" {build}
   "lwt"
   "cohttp.lwt"
   "conduit"
   "cohttp"
   "cryptokit"
-  "alcotest"
+  "alcotest" {build}
 ]

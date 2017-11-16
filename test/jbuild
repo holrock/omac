@@ -1,0 +1,12 @@
+(jbuild_version 1)
+
+(executables
+ ((names (test_main))
+  (libraries (alcotest omac))
+  ))
+
+(alias
+ ((name    runtest)
+  (deps    (test_main.exe))
+  (action  (run ${<}))))
+
